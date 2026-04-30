@@ -569,6 +569,34 @@ img {
 }
 
 /* ==========================================================================
+   WHATSAPP FLOATING BUTTON
+   ========================================================================== */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+}
+
+.whatsapp-float:hover {
+    background-color: #1ebe57;
+    transform: scale(1.1);
+    color: #FFF;
+}
+
+/* ==========================================================================
    RESPONSIVE
    ========================================================================== */
 @media (max-width: 768px) {
@@ -608,5 +636,13 @@ img {
     .social-links-large {
         flex-direction: column;
         align-items: center;
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 30px;
     }
 }
