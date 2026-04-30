@@ -68,4 +68,89 @@ document.addEventListener('DOMContentLoaded', () => {
             offset: 100
         });
     }
+
+    // Liturgy Modal Logic
+    const liturgyBtn = document.getElementById('open-liturgy-btn');
+    const liturgyModal = document.getElementById('liturgyModal');
+    
+    if (liturgyBtn && liturgyModal) {
+        const closeModal = liturgyModal.querySelector('.close-modal');
+        
+        liturgyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            liturgyModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+            fetchLiturgy();
+        });
+
+        closeModal.addEventListener('click', () => {
+            liturgyModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === liturgyModal) {
+                liturgyModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
+    async function fetchLiturgy() {
+        const loading = document.getElementById('liturgy-loading');
+        const dataContainer = document.getElementById('liturgy-data');
+        const errorContainer = document.getElementById('liturgy-error');
+
+        // Only fetch if data is not already loaded
+        if (dataContainer.style.display === 'block') return;
+
+        loading.style.display = 'block';
+        dataContainer.style.display = 'none';
+        errorContainer.style.display = 'none';
+
+        try {
+            const response = await fetch('https://liturgia.up.railway.app/');
+            if (!response.ok) throw new Error('Falha na API');
+            
+            const data = await response.json();
+            
+            // Populate data
+            document.getElementById('liturgy-title').textContent = data.liturgia;
+            document.getElementById('liturgy-color').textContent = `Cor Litúrgica: ${data.cor}`;
+            
+            // Primeira Leitura
+            document.getElementById('pl-title').textContent = data.primeiraLeitura.titulo;
+            document.getElementById('pl-ref').textContent = data.primeiraLeitura.referencia;
+            document.getElementById('pl-text').textContent = data.primeiraLeitura.texto;
+            
+            // Salmo
+            document.getElementById('slm-ref').textContent = data.salmo.referencia;
+            document.getElementById('slm-refrao').textContent = data.salmo.refrao;
+            document.getElementById('slm-text').innerHTML = data.salmo.texto.replace(/\n/g, '<br>');
+            
+            // Segunda Leitura
+            const slContainer = document.getElementById('sl-container');
+            if (typeof data.segundaLeitura === 'object') {
+                slContainer.style.display = 'block';
+                document.getElementById('sl-title').textContent = data.segundaLeitura.titulo;
+                document.getElementById('sl-ref').textContent = data.segundaLeitura.referencia;
+                document.getElementById('sl-text').textContent = data.segundaLeitura.texto;
+            } else {
+                slContainer.style.display = 'none';
+            }
+            
+            // Evangelho
+            document.getElementById('ev-title').textContent = data.evangelho.titulo;
+            document.getElementById('ev-ref').textContent = data.evangelho.referencia;
+            document.getElementById('ev-text').textContent = data.evangelho.texto;
+
+            loading.style.display = 'none';
+            dataContainer.style.display = 'block';
+            
+        } catch (error) {
+            console.error('Erro ao buscar liturgia:', error);
+            loading.style.display = 'none';
+            errorContainer.style.display = 'block';
+        }
+    }
 });
