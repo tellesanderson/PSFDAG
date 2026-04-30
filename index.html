@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paróquia São Francisco de Assis | Guaíra - SP</title>
+    <meta name="description" content="Bem-vindo à Paróquia São Francisco de Assis. Fique por dentro dos horários de missa, sacramentos, liturgia diária e atividades da nossa comunidade.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Navegação -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="img/logo.jpg" alt="Logo Paróquia São Francisco de Assis">
+                <span class="logo-text">Paróquia São Francisco<br>de Assis</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#inicio" class="active">Início</a>
+                <a href="#horarios">Horários</a>
+                <a href="#liturgia">Liturgia Diária</a>
+                <a href="#pastorais">Pastorais</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <span class="hero-subtitle">Bem-vindo à sua Casa</span>
+            <h1 class="hero-title">Paz e Bem!</h1>
+            <p class="hero-text">"Senhor, fazei-me instrumento de vossa paz. Onde houver ódio, que eu leve o amor."</p>
+            <div class="hero-buttons">
+                <a href="#horarios" class="btn btn-primary">Horários de Missa</a>
+                <a href="#contato" class="btn btn-outline">Nossa Localização</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horários e Informações -->
+    <section id="horarios" class="schedule">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nossos Horários</h2>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Programe-se para celebrar conosco e receber os Sacramentos.</p>
+            
+            <div class="schedule-grid">
+                <!-- Missas -->
+                <div class="schedule-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-church schedule-icon"></i>
+                    <h3>Santa Missa</h3>
+                    <div class="time-list">
+                        <div class="time-item">
+                            <span class="time-day">Quarta-feira (Novena)</span>
+                            <span class="time-hour">19:30</span>
+                        </div>
+                        <div class="time-item">
+                            <span class="time-day">Primeira Sexta (Sagrado Coração)</span>
+                            <span class="time-hour">19:30</span>
+                        </div>
+                        <div class="time-item">
+                            <span class="time-day">Sábado</span>
+                            <span class="time-hour">19:00</span>
+                        </div>
+                        <div class="time-item">
+                            <span class="time-day">Domingo</span>
+                            <span class="time-hour">08:00 e 19:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Confissões -->
+                <div class="schedule-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-pray schedule-icon"></i>
+                    <h3>Confissões</h3>
+                    <div class="time-list">
+                        <div class="time-item">
+                            <span class="time-day">Quarta-feira</span>
+                            <span class="time-hour">14:00 às 17:00</span>
+                        </div>
+                        <div class="time-item">
+                            <span class="time-day">Sexta-feira</span>
+                            <span class="time-hour">09:00 às 11:30</span>
+                        </div>
+                        <div class="time-item">
+                            <span class="time-day">Sábado</span>
+                            <span class="time-hour">09:00 às 11:30</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.85rem; color: #666;">*Agendamento prévio na secretaria é recomendado.</p>
+                </div>
+                
+                <!-- Secretaria -->
+                <div class="schedule-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-envelope-open-text schedule-icon"></i>
+                    <h3>Secretaria Paroquial</h3>
+                    <div class="time-list">
+                        <div class="time-item">
+                            <span class="time-day">Segunda a Sexta</span>
+                            <span class="time-hour">08:00 às 17:30</span>
+                        </div>
+                        <div class="time-item">
+                            <span class="time-day">Sábado</span>
+                            <span class="time-hour">08:00 às 12:00</span>
+                        </div>
+                    </div>
+                    <a href="#contato" class="btn btn-primary" style="margin-top: 20px; width: 100%;">Fale Conosco</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liturgia e Espiritualidade -->
+    <section id="liturgia" class="liturgy">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-in">Pão da Palavra</h2>
+            <p class="section-subtitle" data-aos="fade-in">Alimente sua alma com a liturgia diária e o Evangelho do dia.</p>
+            
+            <div class="liturgy-content" data-aos="zoom-in">
+                <i class="fas fa-book-bible" style="font-size: 3rem; color: var(--color-secondary); margin-bottom: 20px;"></i>
+                <p class="liturgy-verse">"A palavra de Deus é viva, eficaz, mais penetrante do que uma espada de dois gumes..."</p>
+                <p class="liturgy-ref">Hebreus 4, 12</p>
+                <br>
+                <a href="https://liturgiadiaria.cancaonova.com/" target="_blank" class="btn btn-primary">Ler a Liturgia de Hoje</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pastorais e Movimentos -->
+    <section id="pastorais" class="ministries">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nossa Comunidade</h2>
+            <p class="section-subtitle" data-aos="fade-up">A Igreja viva se faz através das mãos que servem. Conheça e participe das nossas pastorais.</p>
+            
+            <div class="ministries-grid">
+                <div class="ministry-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2070&auto=format&fit=crop" alt="Catequese">
+                    <div class="ministry-overlay">
+                        <h3>Catequese</h3>
+                        <p>Preparando nossas crianças, jovens e adultos para os Sacramentos e para a vida cristã.</p>
+                    </div>
+                </div>
+                
+                <div class="ministry-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2070&auto=format&fit=crop" alt="Ação Social">
+                    <div class="ministry-overlay">
+                        <h3>Ação Social</h3>
+                        <p>Seguindo os passos de São Francisco no cuidado com os mais necessitados da nossa comunidade.</p>
+                    </div>
+                </div>
+                
+                <div class="ministry-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1438283173091-5dbf5c5a3206?q=80&w=2070&auto=format&fit=crop" alt="Juventude">
+                    <div class="ministry-overlay">
+                        <h3>Grupo de Jovens</h3>
+                        <p>Juventude reunida na alegria e na fé para louvar e servir ao Senhor.</p>
+                    </div>
+                </div>
+                
+                <div class="ministry-card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?q=80&w=2070&auto=format&fit=crop" alt="Música e Liturgia">
+                    <div class="ministry-overlay">
+                        <h3>Música e Liturgia</h3>
+                        <p>Animando nossas celebrações para que o povo reze duas vezes ao cantar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Acompanhe-nos</h2>
+            <p class="section-subtitle">Siga nossas redes sociais e fique por dentro de todos os avisos, transmissões e eventos paroquiais.</p>
+            
+            <div class="social-links-large">
+                <a href="https://www.facebook.com/psaochicodeassis" target="_blank" class="social-box facebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>/psaochicodeassis</span>
+                </a>
+                
+                <a href="https://www.instagram.com/psaochicodeassis/" target="_blank" class="social-box instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>@psaochicodeassis</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contato -->
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-text" style="font-family: var(--font-heading); font-size: 1.5rem;">Paróquia São Francisco de Assis</span>
+                    <p style="margin-top: 15px;">Igreja Católica Apostólica Romana.<br>Servindo a Deus e aos irmãos com amor, seguindo o exemplo do nosso padroeiro São Francisco de Assis.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Acesso Rápido</h4>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#horarios">Horários de Missa</a></li>
+                        <li><a href="#pastorais">Nossas Pastorais</a></li>
+                        <li><a href="#">Dízimo</a></li>
+                        <li><a href="#">Intenções de Missa</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato e Localização</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Rua São Francisco de Assis, 123<br>Centro - Sua Cidade / Estado</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>(XX) XXXXX-XXXX</span>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <span>(XX) XXXXX-XXXX</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>secretaria@psfdag.org.br</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Paróquia São Francisco de Assis. Todos os direitos reservados. Feito com fé e devoção.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
