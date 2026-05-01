@@ -251,22 +251,23 @@ img {
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    color: var(--color-accent);
+    color: #801313; /* Vermelho Cardeal forçado para contraste na foto clara */
     display: block;
+    font-weight: 600;
 }
 
 .hero-title {
     font-size: 4rem;
-    color: var(--color-primary);
+    color: #3c2a21; /* Marrom Profundo forçado para contraste na foto clara */
     margin-bottom: var(--spacing-md);
     text-shadow: none;
 }
 
 .hero-text {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: var(--spacing-md);
-    color: var(--color-text-main);
-    font-weight: 500;
+    color: #2b2b2b; /* Escuro forçado para que não suma no modo escuro do celular */
+    font-weight: 600;
 }
 
 .hero-buttons {
@@ -276,12 +277,12 @@ img {
 }
 
 .hero .btn-outline {
-    color: var(--color-primary);
-    border-color: var(--color-primary);
+    color: #3c2a21;
+    border-color: #3c2a21;
 }
 
 .hero .btn-outline:hover {
-    background-color: var(--color-primary);
+    background-color: #3c2a21;
     color: #ffffff;
 }
 
