@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tellesanderson.github.io/PSFDAG/sitemap.xml
+Sitemap: https://psaofranciscodeassisgtba.com.br/sitemap.xml
