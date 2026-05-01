@@ -442,26 +442,24 @@ img {
     left: 0;
     width: 100%;
     padding: 3rem 1.5rem 1.5rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
     transition: var(--transition-smooth);
 }
 
 .ministry-overlay h3 {
-    color: #fdfbf7;
+    color: #ffffff;
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.9),
-                -1px -1px 0 #111,  
-                 1px -1px 0 #111,
-                -1px  1px 0 #111,
-                 1px  1px 0 #111;
+    font-weight: 700;
+    text-shadow: 0 4px 10px rgba(0,0,0,1);
+    letter-spacing: 1px;
 }
 
 .ministry-overlay p {
-    color: #eaeaea;
+    color: #f0f0f0;
     font-size: 0.95rem;
     line-height: 1.4;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+    text-shadow: 0 2px 5px rgba(0,0,0,1);
 }
 
 .ministry-card:hover img {
