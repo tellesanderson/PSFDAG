@@ -249,6 +249,23 @@ img {
     padding: 0 var(--spacing-sm);
 }
 
+#inicio .hero-content {
+    background: rgba(253, 251, 247, 0.85);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--radius-lg);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin: 0 var(--spacing-md);
+}
+
+@media (max-width: 768px) {
+    #inicio .hero-content {
+        padding: var(--spacing-md);
+        margin: 0 var(--spacing-sm);
+    }
+}
+
 .hero-subtitle {
     font-size: 1.2rem;
     letter-spacing: 2px;
@@ -780,6 +797,8 @@ img {
 
     .camp-grid.reverse {
         direction: ltr;
+        display: flex;
+        flex-direction: column-reverse;
     }
 }
 
