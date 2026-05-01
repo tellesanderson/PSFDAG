@@ -55,6 +55,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: offsetPosition,
                     behavior: "smooth"
                 });
+
+                // Efeito "Suco" (Juice) - Destacar Botões do WhatsApp
+                if (targetId === '#contato') {
+                    // Esperar o scroll terminar aproximadamente
+                    setTimeout(() => {
+                        const footerBtn = document.getElementById('footer-whatsapp-btn');
+                        const floatBtn = document.querySelector('.whatsapp-float');
+                        
+                        // Reseta a animação para permitir toques múltiplos
+                        if (footerBtn) {
+                            footerBtn.classList.remove('juice-highlight');
+                            void footerBtn.offsetWidth; // forçar reflow
+                            footerBtn.classList.add('juice-highlight');
+                        }
+                        
+                        if (floatBtn) {
+                            floatBtn.classList.remove('juice-highlight');
+                            void floatBtn.offsetWidth;
+                            floatBtn.classList.add('juice-highlight');
+                        }
+                    }, 600); // 600ms é o tempo médio da rolagem
+                }
             }
         });
     });

@@ -731,3 +731,20 @@ img {
         margin: 10% auto;
     }
 }
+
+/* ==========================================================================
+   EFEITOS DE UX E MICRO-INTERAÇÕES (SUCO)
+   ========================================================================== */
+
+@keyframes juice-highlight-anim {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.8); }
+    10%, 20% { transform: scale(0.9) rotate(-3deg); }
+    30%, 50%, 70%, 90% { transform: scale(1.15) rotate(3deg); box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0.5); }
+    40%, 60%, 80% { transform: scale(1.15) rotate(-3deg); box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0.5); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.juice-highlight {
+    animation: juice-highlight-anim 1.2s cubic-bezier(.36,.07,.19,.97) both;
+    background-color: #1ebd5a !important; /* Verde mais vibrante durante o destaque */
+}
