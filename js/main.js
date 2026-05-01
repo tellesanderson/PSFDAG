@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const stories = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg'];
         let currentStory = 0;
         let storyTimer;
-        const STORY_DURATION = 5000; // 5 segundos por imagem
+        const STORY_DURATION = 30000; // 30 segundos por imagem para dar tempo de ler
         
         function updateStory() {
             storyImage.src = stories[currentStory];
