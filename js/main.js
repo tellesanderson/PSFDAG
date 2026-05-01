@@ -190,30 +190,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storyModal && openStoryBtn) {
         const stories = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg'];
         let currentStory = 0;
-        let storyTimer;
-        const STORY_DURATION = 30000; // 30 segundos por imagem para dar tempo de ler
         
         function updateStory() {
             storyImage.src = stories[currentStory];
             
-            // Atualiza barrinhas
+            // Atualiza barrinhas (manual)
             progressFills.forEach((fill, index) => {
                 fill.classList.remove('active', 'completed');
-                fill.style.transitionDuration = '0s'; // reseta transição
+                fill.style.transitionDuration = '0s'; // sem transição
                 
-                if (index < currentStory) {
+                if (index <= currentStory) {
                     fill.classList.add('completed');
-                } else if (index === currentStory) {
-                    // Pequeno delay para a transição funcionar após remover a classe
-                    setTimeout(() => {
-                        fill.style.transitionDuration = `${STORY_DURATION}ms`;
-                        fill.classList.add('active');
-                    }, 50);
                 }
             });
-            
-            clearTimeout(storyTimer);
-            storyTimer = setTimeout(nextStory, STORY_DURATION);
         }
         
         function nextStory() {
@@ -238,12 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
         function closeStory() {
             storyModal.classList.remove('active');
             document.body.style.overflow = 'auto';
-            clearTimeout(storyTimer);
             
             // Limpa as barrinhas
             progressFills.forEach(fill => {
                 fill.classList.remove('active', 'completed');
-                fill.style.transitionDuration = '0s';
             });
         }
         
