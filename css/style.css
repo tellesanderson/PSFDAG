@@ -250,7 +250,7 @@ img {
 }
 
 #inicio .hero-content {
-    background: rgba(253, 251, 247, 0.85);
+    background: rgba(253, 251, 247, 0.55);
     padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: var(--radius-lg);
     backdrop-filter: blur(10px);
