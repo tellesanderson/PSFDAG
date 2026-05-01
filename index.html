@@ -149,6 +149,16 @@
         </div>
     </section>
 
+    <!-- Conheça o Padroeiro -->
+    <section class="patron-banner" style="background: linear-gradient(rgba(60, 42, 33, 0.8), rgba(60, 42, 33, 0.9)), url('img/BG.jpg') center/cover fixed; padding: var(--spacing-xl) 0; text-align: center; color: white;">
+        <div class="container" data-aos="zoom-in">
+            <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 10px; color: var(--color-secondary);">São Francisco de Assis</h2>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">"Comece fazendo o que é necessário, depois o que é possível, e de repente você estará fazendo o impossível."</p>
+            <button id="open-story-btn" class="btn" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); border: none; color: white; padding: 12px 30px; font-size: 1.1rem; box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4); border-radius: 50px; cursor: pointer;">
+                <i class="fas fa-play-circle" style="margin-right: 10px;"></i> Conheça a História
+            </button>
+        </div>
+    </section>
     <!-- Liturgia e Espiritualidade -->
     <section id="liturgia" class="liturgy">
         <div class="container">
@@ -326,6 +336,39 @@
     <a href="https://wa.me/554134723510" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Story Modal -->
+    <div id="story-modal" class="story-modal">
+        <div class="story-container">
+            <!-- Fechar -->
+            <button id="close-story" class="story-close"><i class="fas fa-times"></i></button>
+            
+            <!-- Barra superior: Nome e Ícone -->
+            <div class="story-header">
+                <img src="img/logo.jpg" alt="Logo" class="story-avatar">
+                <span class="story-username">São Francisco de Assis</span>
+            </div>
+
+            <!-- Barrinhas de Progresso -->
+            <div class="story-progress-container">
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+            </div>
+
+            <!-- Imagem -->
+            <div class="story-image-wrapper">
+                <img id="story-image" src="img/1.jpg" alt="História">
+            </div>
+
+            <!-- Áreas de toque -->
+            <div id="story-prev" class="story-touch-left"></div>
+            <div id="story-next" class="story-touch-right"></div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <!-- AOS Animation Library -->
