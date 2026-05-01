@@ -676,6 +676,45 @@ img {
     margin-bottom: 20px;
 }
 
+.liturgy-section h3 {
+    text-shadow: 
+        -1px -1px 0 rgba(255, 255, 255, 0.9),  
+         1px -1px 0 rgba(255, 255, 255, 0.9),
+        -1px  1px 0 rgba(255, 255, 255, 0.9),
+         1px  1px 0 rgba(255, 255, 255, 0.9),
+         0 2px 5px rgba(0,0,0,0.15); /* Contorno branco e leve sombra para máximo contraste */
+}
+
+/* ==========================================================================
+   ACAMPAMENTOS (Camp Page)
+   ========================================================================== */
+.camp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.camp-grid.reverse {
+    direction: rtl;
+}
+
+.camp-grid.reverse > * {
+    direction: ltr;
+}
+
+.camp-flyer img {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+    transition: var(--transition-smooth);
+}
+
+.camp-flyer img:hover {
+    transform: scale(1.02);
+}
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
@@ -729,6 +768,15 @@ img {
     .modal-content {
         padding: 25px 15px;
         margin: 10% auto;
+    }
+
+    .camp-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .camp-grid.reverse {
+        direction: ltr;
     }
 }
 

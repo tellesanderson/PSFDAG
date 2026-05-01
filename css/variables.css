@@ -2,7 +2,7 @@
     /* Paleta de Cores Premium (Católica Clássica) */
     --color-primary: #3c2a21; /* Marrom Profundo / Madeira */
     --color-secondary: #c5a059; /* Dourado Envelhecido / Ouro */
-    --color-accent: #801313; /* Vermelho Sangue / Cardeal */
+    --color-accent: #b01c1c; /* Vermelho Cardeal mais claro para legibilidade */
     --color-background: #fcfbfa; /* Off-white / Creme (Paz) */
     --color-surface: #ffffff; /* Branco puro para cards */
     --color-text-main: #2b2b2b;
@@ -43,6 +43,7 @@
         --color-text-main: #f0f0f0;
         --color-text-muted: #b0b0b0;
         --color-primary: #c5a059; /* Dourado vira primário no dark */
+        --color-accent: #ff4d4d; /* Vermelho mais claro para legibilidade no dark */
         --glass-bg: rgba(26, 21, 19, 0.85);
         --glass-border: 1px solid rgba(197, 160, 89, 0.15);
     }
