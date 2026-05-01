@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tellesanderson.github.io/PSFDAG/sitemap.xml
