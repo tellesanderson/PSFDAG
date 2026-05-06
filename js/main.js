@@ -254,4 +254,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ==========================================
+    // DIZIMO - COPY PIX LOGIC
+    // ==========================================
+    const copyPixBtn = document.getElementById('copy-pix-btn');
+    const pixPayload = document.getElementById('pix-payload');
+    const copyFeedback = document.getElementById('copy-feedback');
+
+    if (copyPixBtn && pixPayload && copyFeedback) {
+        copyPixBtn.addEventListener('click', () => {
+            // Select the text field
+            pixPayload.select();
+            pixPayload.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(pixPayload.value).then(() => {
+                // Show feedback
+                copyFeedback.style.display = 'block';
+                copyPixBtn.innerHTML = '<i class="fas fa-check" style="margin-right: 5px;"></i> Copiado';
+                
+                // Hide feedback after 3 seconds
+                setTimeout(() => {
+                    copyFeedback.style.display = 'none';
+                    copyPixBtn.innerHTML = '<i class="far fa-copy" style="margin-right: 5px;"></i> Copiar';
+                }, 3000);
+            }).catch(err => {
+                console.error('Falha ao copiar texto: ', err);
+                copyFeedback.textContent = 'Erro ao copiar.';
+                copyFeedback.style.color = '#dc3545';
+                copyFeedback.style.display = 'block';
+            });
+        });
+    }
+
 });
