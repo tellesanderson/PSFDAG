@@ -90,14 +90,14 @@ img {
     justify-content: center;
     padding: 0.8rem 2rem;
     border-radius: 50px;
-    font-weight: 500;
+    font-weight: bold;
     font-family: var(--font-heading);
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
     border: none;
     transition: var(--transition-smooth);
-    font-size: 0.9rem;
+    font-size: 0.95rem;
 }
 
 .btn-primary {
