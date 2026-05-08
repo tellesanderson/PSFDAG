@@ -22,7 +22,12 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: var(--font-heading);
     font-weight: 600;
     color: var(--color-primary);
@@ -225,7 +230,8 @@ img {
     justify-content: center;
     text-align: center;
     color: var(--color-surface);
-    padding-top: 80px; /* Offset for header */
+    padding-top: 80px;
+    /* Offset for header */
 }
 
 .hero-bg {
@@ -250,12 +256,17 @@ img {
 }
 
 #inicio .hero-content {
-    background: rgba(253, 251, 247, 0.55);
+    background: rgba(253, 251, 247, 0.482);
+    /* Mais translúcido */
     padding: var(--spacing-lg) var(--spacing-xl);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    /* Aumenta o desfoque do BG */
+    -webkit-backdrop-filter: blur(12px);
+    /* Suporte para Safari */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* Sombra um pouco mais forte para dar destaque */
+    border: 1px solid rgb(255, 255, 255);
     margin: 0 var(--spacing-md);
 }
 
@@ -271,14 +282,16 @@ img {
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 1rem;
-    color: #801313; /* Vermelho Cardeal forçado para contraste na foto clara */
+    color: #801313;
+    /* Vermelho Cardeal forçado para contraste na foto clara */
     display: block;
     font-weight: 600;
 }
 
 .hero-title {
     font-size: 4rem;
-    color: #3c2a21; /* Marrom Profundo forçado para contraste na foto clara */
+    color: #3c2a21;
+    /* Marrom Profundo forçado para contraste na foto clara */
     margin-bottom: var(--spacing-md);
     text-shadow: none;
 }
@@ -286,7 +299,8 @@ img {
 .hero-text {
     font-size: 1.3rem;
     margin-bottom: var(--spacing-md);
-    color: #2b2b2b; /* Escuro forçado para que não suma no modo escuro do celular */
+    color: #2b2b2b;
+    /* Escuro forçado para que não suma no modo escuro do celular */
     font-weight: 600;
 }
 
@@ -462,7 +476,7 @@ img {
     left: 0;
     width: 100%;
     padding: 3rem 1.5rem 1.5rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0) 100%);
     transition: var(--transition-smooth);
 }
 
@@ -471,7 +485,7 @@ img {
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
     font-weight: 700;
-    text-shadow: 0 4px 10px rgba(0,0,0,1);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 1);
     letter-spacing: 1px;
 }
 
@@ -479,7 +493,7 @@ img {
     color: #f0f0f0;
     font-size: 0.95rem;
     line-height: 1.4;
-    text-shadow: 0 2px 5px rgba(0,0,0,1);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 1);
     opacity: 0;
     transform: translateY(20px);
     transition: var(--transition-smooth);
@@ -618,7 +632,7 @@ img {
     border-radius: 50px;
     text-align: center;
     font-size: 35px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -636,15 +650,15 @@ img {
    MODAL LITURGIA
    ========================================================================== */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 2000; 
+    display: none;
+    position: fixed;
+    z-index: 2000;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.6); 
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(3px);
     opacity: 0;
@@ -658,13 +672,13 @@ img {
 
 .modal-content {
     background-color: var(--color-surface);
-    margin: 5% auto; 
+    margin: 5% auto;
     padding: 40px;
     border-radius: var(--radius-md);
     width: 90%;
     max-width: 800px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transform: translateY(-20px);
     transition: transform 0.3s ease;
 }
@@ -697,12 +711,13 @@ img {
 }
 
 .liturgy-section h3 {
-    text-shadow: 
-        -1px -1px 0 rgba(255, 255, 255, 0.9),  
-         1px -1px 0 rgba(255, 255, 255, 0.9),
-        -1px  1px 0 rgba(255, 255, 255, 0.9),
-         1px  1px 0 rgba(255, 255, 255, 0.9),
-         0 2px 5px rgba(0,0,0,0.15); /* Contorno branco e leve sombra para máximo contraste */
+    text-shadow:
+        -1px -1px 0 rgba(255, 255, 255, 0.9),
+        1px -1px 0 rgba(255, 255, 255, 0.9),
+        -1px 1px 0 rgba(255, 255, 255, 0.9),
+        1px 1px 0 rgba(255, 255, 255, 0.9),
+        0 2px 5px rgba(0, 0, 0, 0.15);
+    /* Contorno branco e leve sombra para máximo contraste */
 }
 
 /* ==========================================================================
@@ -719,7 +734,7 @@ img {
     direction: rtl;
 }
 
-.camp-grid.reverse > * {
+.camp-grid.reverse>* {
     direction: ltr;
 }
 
@@ -767,11 +782,11 @@ img {
     .hero-title {
         font-size: 2.5rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
     }
-    
+
     .social-links-large {
         flex-direction: column;
         align-items: center;
@@ -807,16 +822,41 @@ img {
    ========================================================================== */
 
 @keyframes juice-highlight-anim {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.8); }
-    10%, 20% { transform: scale(0.9) rotate(-3deg); }
-    30%, 50%, 70%, 90% { transform: scale(1.15) rotate(3deg); box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0.5); }
-    40%, 60%, 80% { transform: scale(1.15) rotate(-3deg); box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0.5); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.8);
+    }
+
+    10%,
+    20% {
+        transform: scale(0.9) rotate(-3deg);
+    }
+
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: scale(1.15) rotate(3deg);
+        box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0.5);
+    }
+
+    40%,
+    60%,
+    80% {
+        transform: scale(1.15) rotate(-3deg);
+        box-shadow: 0 0 20px 10px rgba(37, 211, 102, 0.5);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
 }
 
 .juice-highlight {
-    animation: juice-highlight-anim 1.2s cubic-bezier(.36,.07,.19,.97) both;
-    background-color: #1ebd5a !important; /* Verde mais vibrante durante o destaque */
+    animation: juice-highlight-anim 1.2s cubic-bezier(.36, .07, .19, .97) both;
+    background-color: #1ebd5a !important;
+    /* Verde mais vibrante durante o destaque */
 }
 
 /* ==========================================================================
@@ -847,7 +887,7 @@ img {
     max-height: 800px;
     background: #111;
     overflow: hidden;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 768px) {
@@ -867,7 +907,7 @@ img {
     font-size: 1.5rem;
     z-index: 10;
     cursor: pointer;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
     padding: 10px;
 }
 
@@ -893,7 +933,7 @@ img {
     color: white;
     font-weight: bold;
     font-size: 0.9rem;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .story-progress-container {
@@ -941,7 +981,8 @@ img {
     object-fit: cover;
 }
 
-.story-touch-left, .story-touch-right {
+.story-touch-left,
+.story-touch-right {
     position: absolute;
     top: 0;
     height: 100%;
@@ -950,8 +991,13 @@ img {
     cursor: pointer;
 }
 
-.story-touch-left { left: 0; }
-.story-touch-right { right: 0; }
+.story-touch-left {
+    left: 0;
+}
+
+.story-touch-right {
+    right: 0;
+}
 
 .story-hint-arrow {
     position: absolute;
@@ -960,15 +1006,30 @@ img {
     transform: translateY(-50%);
     font-size: 2.5rem;
     color: rgba(255, 255, 255, 0.9);
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
     animation: hintBlink 4s infinite;
     pointer-events: none;
 }
 
 @keyframes hintBlink {
-    0%, 20%, 100% { opacity: 0; transform: translateY(-50%) translateX(0); }
-    5%, 15% { opacity: 1; transform: translateY(-50%) translateX(10px); }
-    10% { opacity: 0; transform: translateY(-50%) translateX(0); }
+
+    0%,
+    20%,
+    100% {
+        opacity: 0;
+        transform: translateY(-50%) translateX(0);
+    }
+
+    5%,
+    15% {
+        opacity: 1;
+        transform: translateY(-50%) translateX(10px);
+    }
+
+    10% {
+        opacity: 0;
+        transform: translateY(-50%) translateX(0);
+    }
 }
 
 /* ==========================================================================
@@ -1074,7 +1135,7 @@ img {
     padding: 10px;
     border-radius: var(--radius-sm);
     margin-bottom: 1rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .tithe-qr p {
@@ -1086,21 +1147,21 @@ img {
     .tithe-card {
         flex-direction: column-reverse;
     }
-    
+
     .tithe-qr {
         flex: auto;
         padding: var(--spacing-md);
     }
-    
+
     .tithe-qr .qr-code {
         width: 200px;
         height: 200px;
     }
-    
+
     .copy-input-container {
         flex-direction: column;
     }
-    
+
     .copy-input-container button {
         width: 100%;
     }
