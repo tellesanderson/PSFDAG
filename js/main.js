@@ -144,40 +144,55 @@ document.addEventListener('DOMContentLoaded', () => {
         errorContainer.style.display = 'none';
 
         try {
-            const response = await fetch('https://liturgia.up.railway.app/');
+            const response = await fetch('https://api-liturgia-diaria.vercel.app/');
             if (!response.ok) throw new Error('Falha na API');
             
             const data = await response.json();
+            const today = data.today;
             
             // Populate data
-            document.getElementById('liturgy-title').textContent = data.liturgia;
-            document.getElementById('liturgy-color').textContent = `Cor Litúrgica: ${data.cor}`;
+            const titleText = today.entry_title ? today.entry_title.replace(/<br\s*\/?>/gi, ' - ') : 'Liturgia Diária';
+            document.getElementById('liturgy-title').textContent = titleText;
+            
+            const colorName = today.color || '';
+            const capitalizedColor = colorName ? colorName.charAt(0).toUpperCase() + colorName.slice(1) : '';
+            document.getElementById('liturgy-color').textContent = capitalizedColor ? `Cor Litúrgica: ${capitalizedColor}` : '';
             
             // Primeira Leitura
-            document.getElementById('pl-title').textContent = data.primeiraLeitura.titulo;
-            document.getElementById('pl-ref').textContent = data.primeiraLeitura.referencia;
-            document.getElementById('pl-text').textContent = data.primeiraLeitura.texto;
+            const pl = today.readings.first_reading;
+            document.getElementById('pl-title').textContent = pl.head || 'Primeira Leitura';
+            document.getElementById('pl-ref').textContent = pl.title || '';
+            document.getElementById('pl-text').textContent = pl.text || '';
             
             // Salmo
-            document.getElementById('slm-ref').textContent = data.salmo.referencia;
-            document.getElementById('slm-refrao').textContent = data.salmo.refrao;
-            document.getElementById('slm-text').innerHTML = escapeHTML(data.salmo.texto).replace(/\n/g, '<br>');
+            const psalm = today.readings.psalm;
+            document.getElementById('slm-ref').textContent = psalm.title || '';
+            document.getElementById('slm-refrao').textContent = psalm.response || '';
+            
+            if (Array.isArray(psalm.content_psalm)) {
+                const escapedPsalmVerses = psalm.content_psalm.map(verse => escapeHTML(verse));
+                document.getElementById('slm-text').innerHTML = escapedPsalmVerses.join('<br><br>');
+            } else {
+                document.getElementById('slm-text').textContent = '';
+            }
             
             // Segunda Leitura
             const slContainer = document.getElementById('sl-container');
-            if (typeof data.segundaLeitura === 'object') {
+            const sl = today.readings.second_reading;
+            if (sl && sl.text) {
                 slContainer.style.display = 'block';
-                document.getElementById('sl-title').textContent = data.segundaLeitura.titulo;
-                document.getElementById('sl-ref').textContent = data.segundaLeitura.referencia;
-                document.getElementById('sl-text').textContent = data.segundaLeitura.texto;
+                document.getElementById('sl-title').textContent = sl.head || 'Segunda Leitura';
+                document.getElementById('sl-ref').textContent = sl.title || '';
+                document.getElementById('sl-text').textContent = sl.text || '';
             } else {
                 slContainer.style.display = 'none';
             }
             
             // Evangelho
-            document.getElementById('ev-title').textContent = data.evangelho.titulo;
-            document.getElementById('ev-ref').textContent = data.evangelho.referencia;
-            document.getElementById('ev-text').textContent = data.evangelho.texto;
+            const gospel = today.readings.gospel;
+            document.getElementById('ev-title').textContent = gospel.title || 'Evangelho';
+            document.getElementById('ev-ref').textContent = gospel.head_title || '';
+            document.getElementById('ev-text').textContent = gospel.text || '';
 
             loading.style.display = 'none';
             dataContainer.style.display = 'block';
