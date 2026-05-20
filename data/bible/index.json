@@ -1,0 +1,513 @@
+[
+  {
+    "id": 1,
+    "name": "Gênesis",
+    "abbrev": "Gn",
+    "chapters": 50,
+    "testament": "AT"
+  },
+  {
+    "id": 2,
+    "name": "Êxodo",
+    "abbrev": "Ex",
+    "chapters": 40,
+    "testament": "AT"
+  },
+  {
+    "id": 3,
+    "name": "Levítico",
+    "abbrev": "Lv",
+    "chapters": 27,
+    "testament": "AT"
+  },
+  {
+    "id": 4,
+    "name": "Números",
+    "abbrev": "Nm",
+    "chapters": 36,
+    "testament": "AT"
+  },
+  {
+    "id": 5,
+    "name": "Deuteronômio",
+    "abbrev": "Dt",
+    "chapters": 34,
+    "testament": "AT"
+  },
+  {
+    "id": 6,
+    "name": "Josué",
+    "abbrev": "Jos",
+    "chapters": 24,
+    "testament": "AT"
+  },
+  {
+    "id": 7,
+    "name": "Juízes",
+    "abbrev": "Jz",
+    "chapters": 21,
+    "testament": "AT"
+  },
+  {
+    "id": 8,
+    "name": "Rute",
+    "abbrev": "Rt",
+    "chapters": 4,
+    "testament": "AT"
+  },
+  {
+    "id": 9,
+    "name": "I Samuel",
+    "abbrev": "1Sm",
+    "chapters": 31,
+    "testament": "AT"
+  },
+  {
+    "id": 10,
+    "name": "II Samuel",
+    "abbrev": "2Sm",
+    "chapters": 24,
+    "testament": "AT"
+  },
+  {
+    "id": 11,
+    "name": "I Reis",
+    "abbrev": "1Rs",
+    "chapters": 22,
+    "testament": "AT"
+  },
+  {
+    "id": 12,
+    "name": "II Reis",
+    "abbrev": "2Rs",
+    "chapters": 25,
+    "testament": "AT"
+  },
+  {
+    "id": 13,
+    "name": "I Crônicas",
+    "abbrev": "1Cr",
+    "chapters": 29,
+    "testament": "AT"
+  },
+  {
+    "id": 14,
+    "name": "II Crônicas",
+    "abbrev": "2Cr",
+    "chapters": 36,
+    "testament": "AT"
+  },
+  {
+    "id": 15,
+    "name": "Esdras",
+    "abbrev": "Esd",
+    "chapters": 10,
+    "testament": "AT"
+  },
+  {
+    "id": 16,
+    "name": "Neemias",
+    "abbrev": "Ne",
+    "chapters": 13,
+    "testament": "AT"
+  },
+  {
+    "id": 17,
+    "name": "Tobias",
+    "abbrev": "Tb",
+    "chapters": 14,
+    "testament": "AT"
+  },
+  {
+    "id": 18,
+    "name": "Judite",
+    "abbrev": "Jdt",
+    "chapters": 16,
+    "testament": "AT"
+  },
+  {
+    "id": 19,
+    "name": "Ester",
+    "abbrev": "Est",
+    "chapters": 16,
+    "testament": "AT"
+  },
+  {
+    "id": 20,
+    "name": "Jó",
+    "abbrev": "Jó",
+    "chapters": 42,
+    "testament": "AT"
+  },
+  {
+    "id": 21,
+    "name": "Salmos",
+    "abbrev": "Sl",
+    "chapters": 150,
+    "testament": "AT"
+  },
+  {
+    "id": 22,
+    "name": "I Macabeus",
+    "abbrev": "1Mc",
+    "chapters": 16,
+    "testament": "AT"
+  },
+  {
+    "id": 23,
+    "name": "II Macabeus",
+    "abbrev": "2Mc",
+    "chapters": 15,
+    "testament": "AT"
+  },
+  {
+    "id": 24,
+    "name": "Provérbios",
+    "abbrev": "Pr",
+    "chapters": 31,
+    "testament": "AT"
+  },
+  {
+    "id": 25,
+    "name": "Eclesiastes",
+    "abbrev": "Ec",
+    "chapters": 12,
+    "testament": "AT"
+  },
+  {
+    "id": 26,
+    "name": "Cântico dos Cânticos",
+    "abbrev": "Ct",
+    "chapters": 8,
+    "testament": "AT"
+  },
+  {
+    "id": 27,
+    "name": "Sabedoria",
+    "abbrev": "Sb",
+    "chapters": 19,
+    "testament": "AT"
+  },
+  {
+    "id": 28,
+    "name": "Eclesiástico",
+    "abbrev": "Eclo",
+    "chapters": 51,
+    "testament": "AT"
+  },
+  {
+    "id": 29,
+    "name": "Isaías",
+    "abbrev": "Is",
+    "chapters": 66,
+    "testament": "AT"
+  },
+  {
+    "id": 30,
+    "name": "Jeremias",
+    "abbrev": "Jr",
+    "chapters": 52,
+    "testament": "AT"
+  },
+  {
+    "id": 31,
+    "name": "Lamentações",
+    "abbrev": "Lm",
+    "chapters": 5,
+    "testament": "AT"
+  },
+  {
+    "id": 32,
+    "name": "Baruc",
+    "abbrev": "Br",
+    "chapters": 6,
+    "testament": "AT"
+  },
+  {
+    "id": 33,
+    "name": "Ezequiel",
+    "abbrev": "Ez",
+    "chapters": 48,
+    "testament": "AT"
+  },
+  {
+    "id": 34,
+    "name": "Daniel",
+    "abbrev": "Dn",
+    "chapters": 14,
+    "testament": "AT"
+  },
+  {
+    "id": 35,
+    "name": "Oséias",
+    "abbrev": "Os",
+    "chapters": 14,
+    "testament": "AT"
+  },
+  {
+    "id": 36,
+    "name": "Joel",
+    "abbrev": "Jl",
+    "chapters": 4,
+    "testament": "AT"
+  },
+  {
+    "id": 37,
+    "name": "Amós",
+    "abbrev": "Am",
+    "chapters": 9,
+    "testament": "AT"
+  },
+  {
+    "id": 38,
+    "name": "Abdias",
+    "abbrev": "Ob",
+    "chapters": 1,
+    "testament": "AT"
+  },
+  {
+    "id": 39,
+    "name": "Jonas",
+    "abbrev": "Jon",
+    "chapters": 4,
+    "testament": "AT"
+  },
+  {
+    "id": 40,
+    "name": "Miquéias",
+    "abbrev": "Mi",
+    "chapters": 7,
+    "testament": "AT"
+  },
+  {
+    "id": 41,
+    "name": "Naum",
+    "abbrev": "Na",
+    "chapters": 3,
+    "testament": "AT"
+  },
+  {
+    "id": 42,
+    "name": "Habacuc",
+    "abbrev": "Hab",
+    "chapters": 3,
+    "testament": "AT"
+  },
+  {
+    "id": 43,
+    "name": "Sofonias",
+    "abbrev": "Sof",
+    "chapters": 3,
+    "testament": "AT"
+  },
+  {
+    "id": 44,
+    "name": "Ageu",
+    "abbrev": "Ag",
+    "chapters": 2,
+    "testament": "AT"
+  },
+  {
+    "id": 45,
+    "name": "Zacarias",
+    "abbrev": "Zc",
+    "chapters": 14,
+    "testament": "AT"
+  },
+  {
+    "id": 46,
+    "name": "Malaquias",
+    "abbrev": "Ml",
+    "chapters": 3,
+    "testament": "AT"
+  },
+  {
+    "id": 47,
+    "name": "São Mateus",
+    "abbrev": "Mt",
+    "chapters": 28,
+    "testament": "NT"
+  },
+  {
+    "id": 48,
+    "name": "São Marcos",
+    "abbrev": "Mc",
+    "chapters": 16,
+    "testament": "NT"
+  },
+  {
+    "id": 49,
+    "name": "São Lucas",
+    "abbrev": "Lc",
+    "chapters": 24,
+    "testament": "NT"
+  },
+  {
+    "id": 50,
+    "name": "São João",
+    "abbrev": "Jo",
+    "chapters": 21,
+    "testament": "NT"
+  },
+  {
+    "id": 51,
+    "name": "Atos dos Apóstolos",
+    "abbrev": "At",
+    "chapters": 28,
+    "testament": "NT"
+  },
+  {
+    "id": 52,
+    "name": "Romanos",
+    "abbrev": "Rm",
+    "chapters": 16,
+    "testament": "NT"
+  },
+  {
+    "id": 53,
+    "name": "I Coríntios",
+    "abbrev": "1Cor",
+    "chapters": 16,
+    "testament": "NT"
+  },
+  {
+    "id": 54,
+    "name": "II Coríntios",
+    "abbrev": "2Cor",
+    "chapters": 13,
+    "testament": "NT"
+  },
+  {
+    "id": 55,
+    "name": "Gálatas",
+    "abbrev": "Gl",
+    "chapters": 6,
+    "testament": "NT"
+  },
+  {
+    "id": 56,
+    "name": "Efésios",
+    "abbrev": "Ef",
+    "chapters": 6,
+    "testament": "NT"
+  },
+  {
+    "id": 57,
+    "name": "Filipenses",
+    "abbrev": "Fl",
+    "chapters": 4,
+    "testament": "NT"
+  },
+  {
+    "id": 58,
+    "name": "Colossenses",
+    "abbrev": "Cl",
+    "chapters": 4,
+    "testament": "NT"
+  },
+  {
+    "id": 59,
+    "name": "I Tessalonicenses",
+    "abbrev": "1Tes",
+    "chapters": 5,
+    "testament": "NT"
+  },
+  {
+    "id": 60,
+    "name": "II Tessalonicenses",
+    "abbrev": "2Tes",
+    "chapters": 3,
+    "testament": "NT"
+  },
+  {
+    "id": 61,
+    "name": "I Timóteo",
+    "abbrev": "1Tim",
+    "chapters": 6,
+    "testament": "NT"
+  },
+  {
+    "id": 62,
+    "name": "II Timóteo",
+    "abbrev": "2Tim",
+    "chapters": 4,
+    "testament": "NT"
+  },
+  {
+    "id": 63,
+    "name": "Tito",
+    "abbrev": "Tit",
+    "chapters": 3,
+    "testament": "NT"
+  },
+  {
+    "id": 64,
+    "name": "Filêmon",
+    "abbrev": "Flm",
+    "chapters": 1,
+    "testament": "NT"
+  },
+  {
+    "id": 65,
+    "name": "Hebreus",
+    "abbrev": "Heb",
+    "chapters": 13,
+    "testament": "NT"
+  },
+  {
+    "id": 66,
+    "name": "São Tiago",
+    "abbrev": "Tg",
+    "chapters": 5,
+    "testament": "NT"
+  },
+  {
+    "id": 67,
+    "name": "I São Pedro",
+    "abbrev": "1Ped",
+    "chapters": 5,
+    "testament": "NT"
+  },
+  {
+    "id": 68,
+    "name": "II São Pedro",
+    "abbrev": "2Ped",
+    "chapters": 3,
+    "testament": "NT"
+  },
+  {
+    "id": 69,
+    "name": "I São João",
+    "abbrev": "1Jo",
+    "chapters": 5,
+    "testament": "NT"
+  },
+  {
+    "id": 70,
+    "name": "II São João",
+    "abbrev": "2Jo",
+    "chapters": 1,
+    "testament": "NT"
+  },
+  {
+    "id": 71,
+    "name": "III São João",
+    "abbrev": "3Jo",
+    "chapters": 1,
+    "testament": "NT"
+  },
+  {
+    "id": 72,
+    "name": "São Judas",
+    "abbrev": "Jud",
+    "chapters": 1,
+    "testament": "NT"
+  },
+  {
+    "id": 73,
+    "name": "Apocalipse",
+    "abbrev": "Ap",
+    "chapters": 22,
+    "testament": "NT"
+  }
+]

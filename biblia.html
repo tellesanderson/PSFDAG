@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bíblia Sagrada Católica Online | Tradução Ave Maria</title>
+    <meta name="description" content="Leia toda a Bíblia Sagrada online na versão católica Ave Maria (com todos os 73 livros). Leitor rápido, limpo, responsivo e adaptado para celulares e tablets.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://psaofranciscodeassisgtba.com.br/biblia.html">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css?v=6">
+    <link rel="stylesheet" href="css/bible.css?v=1">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.css" integrity="sha512-1cK78a1o+FhU3LIgSQs5wEg6FMW07QXPGcM3gtUfnV7UtXO65vKGjG19SxLNIV4mHF5E35wUtxOP88LMzBIEPg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+    <!-- Header / Navegação -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo.jpg" alt="Logo Paróquia São Francisco de Assis">
+                <span class="logo-text">Paróquia São Francisco<br>de Assis</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="index.html#inicio">Início</a>
+                <a href="index.html#horarios">Horários</a>
+                <a href="index.html#liturgia">Liturgia Diária</a>
+                <a href="index.html#pastorais">Pastorais</a>
+                <a href="acampamento.html">Acampamentos</a>
+                <a href="biblia.html" class="active">Bíblia</a>
+                <a href="index.html#dizimo">Dízimo</a>
+                <a href="index.html#contato">Contato</a>
+            </nav>
+            
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Layout da Bíblia -->
+    <main class="bible-layout">
+        
+        <!-- Painel Lateral de Navegação (Livros) -->
+        <aside class="bible-sidebar">
+            <div class="sidebar-header">
+                <input type="text" id="bible-search" class="sidebar-search" placeholder="Buscar livro...">
+            </div>
+            <div class="sidebar-content">
+                <div class="testament-section">
+                    <h3 class="testament-title">Antigo Testamento</h3>
+                    <ul id="books-list-at" class="books-list">
+                        <!-- Gerado dinamicamente -->
+                    </ul>
+                </div>
+                <div class="testament-section">
+                    <h3 class="testament-title">Novo Testamento</h3>
+                    <ul id="books-list-nt" class="books-list">
+                        <!-- Gerado dinamicamente -->
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Painel de Leitura -->
+        <section class="bible-reader">
+            <!-- Barra de Opções Superior -->
+            <div class="reader-toolbar">
+                <div class="current-location" style="cursor: pointer;" title="Clique para mudar de capítulo">
+                    <h2 id="location-book">Gênesis</h2>
+                    <span id="location-chapter" class="btn btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem; border-radius: 15px;">Capítulo 1</span>
+                </div>
+                
+                <div class="settings-controls">
+                    <button id="font-toggle" class="control-btn" title="Mudar estilo da fonte">Fonte: Serifada</button>
+                    <div class="size-controls">
+                        <button id="size-decrease" class="size-btn" title="Diminuir texto">A-</button>
+                        <button id="size-increase" class="size-btn" title="Aumentar texto">A+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grade de Seleção de Capítulos (exibida quando clica no título ou ao selecionar livro) -->
+            <div id="chapter-selector-area" class="chapter-selector-container" style="display: none;">
+                <h3 style="font-family: var(--font-heading); color: var(--color-primary); border-bottom: 2px solid var(--color-secondary); padding-bottom: 0.5rem; margin-bottom: 1rem;">Selecione o Capítulo</h3>
+                <div id="chapter-grid" class="chapter-grid">
+                    <!-- Gerado dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Área dos Versículos -->
+            <div id="reading-area" class="reading-container">
+                <article id="bible-text" class="bible-text font-serif size-md">
+                    <!-- Gerado dinamicamente -->
+                </article>
+
+                <!-- Botões de Navegação Anterior/Próximo -->
+                <nav class="reader-nav">
+                    <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Anterior</button>
+                    <button id="next-btn" class="nav-btn">Próximo <i class="fas fa-chevron-right"></i></button>
+                </nav>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-text" style="font-family: var(--font-heading); font-size: 1.5rem;">Paróquia São Francisco de Assis</span>
+                    <p style="margin-top: 15px;">Igreja Católica Apostólica Romana.<br>Servindo a Deus e aos irmãos com amor, seguindo o exemplo do nosso padroeiro São Francisco de Assis.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Acesso Rápido</h4>
+                    <ul>
+                        <li><a href="index.html#inicio">Início</a></li>
+                        <li><a href="index.html#horarios">Horários de Missa</a></li>
+                        <li><a href="index.html#pastorais">Nossas Pastorais</a></li>
+                        <li><a href="acampamento.html">Acampamentos</a></li>
+                        <li><a href="biblia.html">Bíblia Sagrada</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contato e Localização</h4>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><a href="https://maps.app.goo.gl/2fXeiiGiojJsT8L88" target="_blank" rel="noopener noreferrer" style="color: inherit;">Rua Engenheiro Beltrão, 186<br>Guaratuba - PR, Brasil</a></span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+55 41 3472-3510</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span><a href="mailto:paroquiasaofranciscogtba@hotmail.com" style="color: inherit;">paroquiasaofranciscogtba@hotmail.com</a></span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/554134723510" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 20px; display: inline-flex; align-items: center; justify-content: center;"><i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i> Falar com a Secretaria</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Paróquia São Francisco de Assis. Todos os direitos reservados. Feito com fé e devoção.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: rgba(255, 255, 255, 0.7);">Desenvolvido por <a href="https://wa.me/5541935000928?text=Ol%C3%A1%2C%20vim%20atrav%C3%A9s%20do%20site%20da%20par%C3%B3quia%20s%C3%A3o%20francisco%20de%20assis..." target="_blank" rel="noopener noreferrer" style="color: #ffffff; font-weight: bold; text-decoration: underline;">Anderson Telles</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/554134723510" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHy501CgVNZryVy16M1MZhR1Ol65Weg36k6ltF9cWD16gZlzBU3FMOP02IF9wc5QrJu9ONwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bible.js"></script>
+</body>
+</html>
