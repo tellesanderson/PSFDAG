@@ -712,12 +712,21 @@ img {
 
 .liturgy-section h3 {
     text-shadow:
-        -1px -1px 0 rgba(255, 255, 255, 0.9),
-        1px -1px 0 rgba(255, 255, 255, 0.9),
-        -1px 1px 0 rgba(255, 255, 255, 0.9),
-        1px 1px 0 rgba(255, 255, 255, 0.9),
-        0 2px 5px rgba(0, 0, 0, 0.15);
-    /* Contorno branco e leve sombra para máximo contraste */
+        -0.5px -0.5px 0 rgba(255, 255, 255, 0.6),
+        0.5px -0.5px 0 rgba(255, 255, 255, 0.6),
+        -0.5px 0.5px 0 rgba(255, 255, 255, 0.6),
+        0.5px 0.5px 0 rgba(255, 255, 255, 0.6),
+        0 1px 3px rgba(0, 0, 0, 0.15);
+    /* Contorno branco mais fino e leve sombra */
+}
+
+.liturgy-verse-num {
+    font-size: 0.75em;
+    font-weight: bold;
+    vertical-align: super;
+    line-height: 0;
+    margin-right: 3px;
+    color: var(--color-accent);
 }
 
 /* ==========================================================================

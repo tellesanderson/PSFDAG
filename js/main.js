@@ -131,6 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
         );
     }
 
+    function formatVerses(str) {
+        if (!str) return '';
+        const escaped = escapeHTML(str);
+        // Formata números (geralmente versículos) com uma classe específica e um espaço após
+        return escaped.replace(/\b\d+/g, match => `<strong class="liturgy-verse-num">${match}</strong>&nbsp;`);
+    }
+
     async function fetchLiturgy() {
         const loading = document.getElementById('liturgy-loading');
         const dataContainer = document.getElementById('liturgy-data');
@@ -162,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const pl = today.readings.first_reading;
             document.getElementById('pl-title').textContent = pl.head || 'Primeira Leitura';
             document.getElementById('pl-ref').textContent = pl.title || '';
-            document.getElementById('pl-text').textContent = pl.text || '';
+            document.getElementById('pl-text').innerHTML = formatVerses(pl.text || '');
             
             // Salmo
             const psalm = today.readings.psalm;
@@ -170,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('slm-refrao').textContent = psalm.response || '';
             
             if (Array.isArray(psalm.content_psalm)) {
-                const escapedPsalmVerses = psalm.content_psalm.map(verse => escapeHTML(verse));
-                document.getElementById('slm-text').innerHTML = escapedPsalmVerses.join('<br><br>');
+                const formattedPsalmVerses = psalm.content_psalm.map(verse => formatVerses(verse));
+                document.getElementById('slm-text').innerHTML = formattedPsalmVerses.join('<br><br>');
             } else {
                 document.getElementById('slm-text').textContent = '';
             }
@@ -183,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 slContainer.style.display = 'block';
                 document.getElementById('sl-title').textContent = sl.head || 'Segunda Leitura';
                 document.getElementById('sl-ref').textContent = sl.title || '';
-                document.getElementById('sl-text').textContent = sl.text || '';
+                document.getElementById('sl-text').innerHTML = formatVerses(sl.text || '');
             } else {
                 slContainer.style.display = 'none';
             }
@@ -192,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const gospel = today.readings.gospel;
             document.getElementById('ev-title').textContent = gospel.title || 'Evangelho';
             document.getElementById('ev-ref').textContent = gospel.head_title || '';
-            document.getElementById('ev-text').textContent = gospel.text || '';
+            document.getElementById('ev-text').innerHTML = formatVerses(gospel.text || '');
 
             loading.style.display = 'none';
             dataContainer.style.display = 'block';
