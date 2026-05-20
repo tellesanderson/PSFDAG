@@ -118,6 +118,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function escapeHTML(str) {
+        if (!str) return '';
+        return str.replace(/[&<>'"]/g, 
+            tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag)
+        );
+    }
+
     async function fetchLiturgy() {
         const loading = document.getElementById('liturgy-loading');
         const dataContainer = document.getElementById('liturgy-data');
@@ -148,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Salmo
             document.getElementById('slm-ref').textContent = data.salmo.referencia;
             document.getElementById('slm-refrao').textContent = data.salmo.refrao;
-            document.getElementById('slm-text').innerHTML = data.salmo.texto.replace(/\n/g, '<br>');
+            document.getElementById('slm-text').innerHTML = escapeHTML(data.salmo.texto).replace(/\n/g, '<br>');
             
             // Segunda Leitura
             const slContainer = document.getElementById('sl-container');
