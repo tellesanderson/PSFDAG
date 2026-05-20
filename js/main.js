@@ -134,8 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function formatVerses(str) {
         if (!str) return '';
         const escaped = escapeHTML(str);
-        // Formata números (geralmente versículos) com uma classe específica e um espaço após
-        return escaped.replace(/\b\d+/g, match => `<strong class="liturgy-verse-num">${match}</strong>&nbsp;`);
+        // Formata números (geralmente versículos) com uma classe específica e um espaço após,
+        // mas ignora entidades HTML como &#39; para evitar bugs de caracteres
+        return escaped.replace(/&#\d+;|(\b\d+)/g, (match, p1) => {
+            if (p1) {
+                return `<strong class="liturgy-verse-num">${p1}</strong>&nbsp;`;
+            }
+            return match;
+        });
     }
 
     async function fetchLiturgy() {
