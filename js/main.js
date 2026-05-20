@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         errorContainer.style.display = 'none';
 
         try {
-            const response = await fetch('https://api-liturgia-diaria.vercel.app/');
+            const response = await fetch('https://api.allorigins.win/raw?url=https://api-liturgia-diaria.vercel.app/');
             if (!response.ok) throw new Error('Falha na API');
             
             const data = await response.json();
