@@ -157,55 +157,146 @@ document.addEventListener('DOMContentLoaded', () => {
         errorContainer.style.display = 'none';
 
         try {
-            const response = await fetch('https://api.allorigins.win/raw?url=https://api-liturgia-diaria.vercel.app/');
-            if (!response.ok) throw new Error('Falha na API');
+            // Buscando diretamente da Canção Nova usando o proxy de CORS do CodeTabs
+            const response = await fetch('https://api.codetabs.com/v1/proxy?quest=https://liturgia.cancaonova.com/pb/');
+            if (!response.ok) throw new Error('Falha ao buscar liturgia');
             
-            const data = await response.json();
-            const today = data.today;
+            const htmlText = await response.text();
             
-            // Populate data
-            const titleText = today.entry_title ? today.entry_title.replace(/<br\s*\/?>/gi, ' - ') : 'Liturgia Diária';
+            // Parser do HTML utilizando DOMParser nativo do navegador
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, 'text/html');
+
+            // 1. Título principal
+            const titleText = doc.querySelector('.entry-title')?.textContent.trim() || 'Liturgia Diária';
             document.getElementById('liturgy-title').textContent = titleText;
             
-            const colorName = today.color || '';
-            const capitalizedColor = colorName ? colorName.charAt(0).toUpperCase() + colorName.slice(1) : '';
-            document.getElementById('liturgy-color').textContent = capitalizedColor ? `Cor Litúrgica: ${capitalizedColor}` : '';
+            // 2. Cor Litúrgica
+            let cor = 'Branco';
+            const bodyClass = doc.body.className || '';
+            if (bodyClass.includes('verde')) cor = 'Verde';
+            else if (bodyClass.includes('vermelha') || bodyClass.includes('vermelho')) cor = 'Vermelho';
+            else if (bodyClass.includes('roxa') || bodyClass.includes('roxo')) cor = 'Roxo';
+            else if (bodyClass.includes('branca') || bodyClass.includes('branco')) cor = 'Branco';
+            else if (bodyClass.includes('rosa')) cor = 'Rosa';
+            else if (bodyClass.includes('preta') || bodyClass.includes('preto')) cor = 'Preto';
             
+            document.getElementById('liturgy-color').textContent = `Cor Litúrgica: ${cor}`;
+
+            // Helper para formatar versículos e limpar conteúdo
+            function parseReading(paneId) {
+                const pane = doc.getElementById(paneId);
+                if (!pane) return null;
+                const clone = pane.cloneNode(true);
+                
+                // Remover áudios/iframes
+                const embeds = clone.querySelectorAll('iframe, .embeds-audio');
+                embeds.forEach(e => e.remove());
+
+                // Adicionar classe liturgy-verse-num nos versículos
+                clone.querySelectorAll('strong').forEach(el => {
+                    const txt = el.textContent.trim();
+                    if (/^\d+[a-z]?$/i.test(txt)) {
+                        el.className = 'liturgy-verse-num';
+                    }
+                });
+
+                const paragraphs = Array.from(clone.querySelectorAll('p')).filter(p => p.textContent.trim().length > 0);
+                if (paragraphs.length === 0) return null;
+
+                let title = '';
+                let ref = '';
+                let headerParaIdx = -1;
+
+                for (let i = 0; i < paragraphs.length; i++) {
+                    const text = paragraphs[i].textContent.trim();
+                    if (text.includes("Leitura") || text.includes("Evangelho")) {
+                        headerParaIdx = i;
+                        const match = text.match(/(.*?)\((.*?)\)/);
+                        if (match) {
+                            title = match[1].trim();
+                            ref = match[2].trim();
+                        } else {
+                            title = text;
+                        }
+                        break;
+                    }
+                }
+
+                if (headerParaIdx !== -1) {
+                    paragraphs.splice(headerParaIdx, 1);
+                }
+
+                const textHTML = paragraphs.map(p => p.outerHTML).join('\n');
+                return { title, ref, text: textHTML };
+            }
+
+            function parseSalmo(paneId) {
+                const pane = doc.getElementById(paneId);
+                if (!pane) return null;
+                const clone = pane.cloneNode(true);
+                const embeds = clone.querySelectorAll('iframe, .embeds-audio');
+                embeds.forEach(e => e.remove());
+
+                clone.querySelectorAll('strong').forEach(el => {
+                    const txt = el.textContent.trim();
+                    if (/^\d+[a-z]?$/i.test(txt)) {
+                        el.className = 'liturgy-verse-num';
+                    }
+                });
+
+                const paragraphs = Array.from(clone.querySelectorAll('p')).filter(p => p.textContent.trim().length > 0);
+                if (paragraphs.length < 2) return null;
+
+                const refText = paragraphs[0].textContent.trim();
+                const refraoText = paragraphs[1].textContent.trim();
+                const versesParagraphs = paragraphs.slice(2);
+                const textHTML = versesParagraphs.map(p => p.outerHTML).join('\n');
+
+                return {
+                    ref: refText,
+                    refrao: refraoText,
+                    text: textHTML
+                };
+            }
+
             // Primeira Leitura
-            const pl = today.readings.first_reading;
-            document.getElementById('pl-title').textContent = pl.head || 'Primeira Leitura';
-            document.getElementById('pl-ref').textContent = pl.title || '';
-            document.getElementById('pl-text').innerHTML = formatVerses(pl.text || '');
+            const pl = parseReading("liturgia-1");
+            if (pl) {
+                document.getElementById('pl-title').textContent = pl.title || 'Primeira Leitura';
+                document.getElementById('pl-ref').textContent = pl.ref || '';
+                document.getElementById('pl-text').innerHTML = pl.text;
+            }
             
             // Salmo
-            const psalm = today.readings.psalm;
-            document.getElementById('slm-ref').textContent = psalm.title || '';
-            document.getElementById('slm-refrao').textContent = psalm.response || '';
-            
-            if (Array.isArray(psalm.content_psalm)) {
-                const formattedPsalmVerses = psalm.content_psalm.map(verse => formatVerses(verse));
-                document.getElementById('slm-text').innerHTML = formattedPsalmVerses.join('<br><br>');
+            const salmo = parseSalmo("liturgia-2");
+            if (salmo) {
+                document.getElementById('slm-ref').textContent = salmo.ref || '';
+                document.getElementById('slm-refrao').textContent = salmo.refrao || '';
+                document.getElementById('slm-text').innerHTML = salmo.text;
             } else {
                 document.getElementById('slm-text').textContent = '';
             }
             
             // Segunda Leitura
             const slContainer = document.getElementById('sl-container');
-            const sl = today.readings.second_reading;
+            const sl = parseReading("liturgia-3");
             if (sl && sl.text) {
                 slContainer.style.display = 'block';
-                document.getElementById('sl-title').textContent = sl.head || 'Segunda Leitura';
-                document.getElementById('sl-ref').textContent = sl.title || '';
-                document.getElementById('sl-text').innerHTML = formatVerses(sl.text || '');
+                document.getElementById('sl-title').textContent = sl.title || 'Segunda Leitura';
+                document.getElementById('sl-ref').textContent = sl.ref || '';
+                document.getElementById('sl-text').innerHTML = sl.text;
             } else {
                 slContainer.style.display = 'none';
             }
             
             // Evangelho
-            const gospel = today.readings.gospel;
-            document.getElementById('ev-title').textContent = gospel.title || 'Evangelho';
-            document.getElementById('ev-ref').textContent = gospel.head_title || '';
-            document.getElementById('ev-text').innerHTML = formatVerses(gospel.text || '');
+            const gospel = parseReading("liturgia-4");
+            if (gospel) {
+                document.getElementById('ev-title').textContent = gospel.title || 'Evangelho';
+                document.getElementById('ev-ref').textContent = gospel.ref || '';
+                document.getElementById('ev-text').innerHTML = gospel.text;
+            }
 
             loading.style.display = 'none';
             dataContainer.style.display = 'block';
