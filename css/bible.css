@@ -271,7 +271,7 @@
 @media (prefers-color-scheme: dark) {
     .chapter-btn.active {
         background-color: var(--color-secondary);
-        color: var(--color-primary);
+        color: #1a1513;
         border-color: var(--color-secondary);
     }
 }
