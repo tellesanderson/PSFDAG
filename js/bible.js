@@ -164,6 +164,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalSearchClear.style.display = currentSearchQuery ? 'block' : 'none';
             }
             filterModalBooks();
+            
+            // Auto scroll results to the very top so they are instantly visible above the virtual keyboard
+            const scrollContainer = document.querySelector('.modal-books-scroll');
+            if (scrollContainer) {
+                scrollContainer.scrollTop = 0;
+            }
+        });
+
+        // When focusing search input on mobile, ensure smooth viewport positioning
+        modalSearchInput.addEventListener('focus', () => {
+            const scrollContainer = document.querySelector('.modal-books-scroll');
+            if (scrollContainer) {
+                scrollContainer.scrollTop = 0;
+            }
+            if (window.innerWidth <= 768) {
+                updateModalViewportHeight();
+            }
         });
     }
     
@@ -174,6 +191,11 @@ document.addEventListener('DOMContentLoaded', () => {
             modalSearchClear.style.display = 'none';
             filterModalBooks();
             modalSearchInput.focus();
+            
+            const scrollContainer = document.querySelector('.modal-books-scroll');
+            if (scrollContainer) {
+                scrollContainer.scrollTop = 0;
+            }
         });
     }
     
@@ -184,8 +206,30 @@ document.addEventListener('DOMContentLoaded', () => {
             chip.classList.add('active');
             activeFilter = chip.dataset.filter || 'ALL';
             filterModalBooks();
+            
+            const scrollContainer = document.querySelector('.modal-books-scroll');
+            if (scrollContainer) {
+                scrollContainer.scrollTop = 0;
+            }
         });
     });
+    
+    // Dynamic Visual Viewport support for mobile virtual keyboard
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', updateModalViewportHeight);
+        window.visualViewport.addEventListener('scroll', updateModalViewportHeight);
+    }
+
+    function updateModalViewportHeight() {
+        if (selectorModal && selectorModal.classList.contains('open') && window.innerWidth <= 768) {
+            const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+            const dialog = selectorModal.querySelector('.bible-modal-dialog');
+            if (dialog) {
+                dialog.style.height = `${viewportHeight}px`;
+                dialog.style.maxHeight = `${viewportHeight}px`;
+            }
+        }
+    }
     
     // Keyboard shortcut - Escape key closes modal
     document.addEventListener('keydown', (e) => {
@@ -446,6 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectorModal.classList.add('open');
         selectorModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        updateModalViewportHeight();
         
         if (targetView === 'chapters' && currentBook) {
             selectBookInModal(currentBook);
@@ -469,6 +514,15 @@ document.addEventListener('DOMContentLoaded', () => {
         selectorModal.classList.remove('open');
         selectorModal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+        
+        const dialog = selectorModal.querySelector('.bible-modal-dialog');
+        if (dialog) {
+            dialog.style.height = '';
+            dialog.style.maxHeight = '';
+        }
+        if (modalSearchInput) {
+            modalSearchInput.blur();
+        }
     }
 
     // =========================================================================
