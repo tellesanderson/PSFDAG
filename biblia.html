@@ -10,7 +10,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css?v=6">
-    <link rel="stylesheet" href="css/bible.css?v=2">
+    <link rel="stylesheet" href="css/bible.css?v=3">
     
     <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -48,20 +48,23 @@
     <!-- Layout da Bíblia -->
     <main class="bible-layout">
         
-        <!-- Painel Lateral de Navegação (Livros) -->
+        <!-- Painel Lateral de Navegação (Desktop) -->
         <aside class="bible-sidebar">
             <div class="sidebar-header">
-                <input type="text" id="bible-search" class="sidebar-search" placeholder="Buscar livro...">
+                <div class="sidebar-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="bible-search" class="sidebar-search" placeholder="Buscar livro...">
+                </div>
             </div>
             <div class="sidebar-content">
                 <div class="testament-section">
-                    <h3 class="testament-title">Antigo Testamento</h3>
+                    <h3 class="testament-title"><i class="fas fa-scroll"></i> Antigo Testamento</h3>
                     <ul id="books-list-at" class="books-list">
                         <!-- Gerado dinamicamente -->
                     </ul>
                 </div>
                 <div class="testament-section">
-                    <h3 class="testament-title">Novo Testamento</h3>
+                    <h3 class="testament-title"><i class="fas fa-cross"></i> Novo Testamento</h3>
                     <ul id="books-list-nt" class="books-list">
                         <!-- Gerado dinamicamente -->
                     </ul>
@@ -73,23 +76,37 @@
         <section class="bible-reader">
             <!-- Barra de Opções Superior -->
             <div class="reader-toolbar">
-                <div class="current-location" style="cursor: pointer;" title="Clique para mudar de capítulo">
-                    <h2 id="location-book">Gênesis</h2>
-                    <span id="location-chapter" class="btn btn-outline" style="padding: 0.3rem 0.8rem; font-size: 0.85rem; border-radius: 15px;">Capítulo 1</span>
-                </div>
+                <button id="open-selector-btn" class="location-btn" aria-label="Mudar Livro ou Capítulo" title="Toque para mudar de Livro ou Capítulo">
+                    <div class="location-icon-box">
+                        <i class="fas fa-book-bible"></i>
+                    </div>
+                    <div class="location-text-group">
+                        <div class="location-main-row">
+                            <h2 id="location-book">Gênesis</h2>
+                            <span id="location-chapter" class="location-chapter-badge">Capítulo 1</span>
+                            <i class="fas fa-chevron-down location-dropdown-icon"></i>
+                        </div>
+                        <span class="location-hint">Toque para trocar livro ou capítulo</span>
+                    </div>
+                </button>
                 
                 <div class="settings-controls">
-                    <button id="font-toggle" class="control-btn" title="Mudar estilo da fonte">Fonte: Serifada</button>
+                    <button id="font-toggle" class="control-btn" title="Mudar estilo da fonte">
+                        <i class="fas fa-font"></i> <span id="font-label">Serifada</span>
+                    </button>
                     <div class="size-controls">
-                        <button id="size-decrease" class="size-btn" title="Diminuir texto">A-</button>
-                        <button id="size-increase" class="size-btn" title="Aumentar texto">A+</button>
+                        <button id="size-decrease" class="size-btn" title="Diminuir texto" aria-label="Diminuir tamanho da fonte">A-</button>
+                        <button id="size-increase" class="size-btn" title="Aumentar texto" aria-label="Aumentar tamanho da fonte">A+</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Grade de Seleção de Capítulos (exibida quando clica no título ou ao selecionar livro) -->
+            <!-- Grade de Seleção de Capítulos Inline (opcional) -->
             <div id="chapter-selector-area" class="chapter-selector-container" style="display: none;">
-                <h3 style="font-family: var(--font-heading); color: var(--color-primary); border-bottom: 2px solid var(--color-secondary); padding-bottom: 0.5rem; margin-bottom: 1rem;">Selecione o Capítulo</h3>
+                <div class="chapter-selector-header">
+                    <h3 id="inline-chapter-title">Selecione o Capítulo</h3>
+                    <button id="close-inline-chapter-btn" class="btn btn-outline btn-sm"><i class="fas fa-times"></i> Fechar</button>
+                </div>
                 <div id="chapter-grid" class="chapter-grid">
                     <!-- Gerado dinamicamente -->
                 </div>
@@ -103,13 +120,111 @@
 
                 <!-- Botões de Navegação Anterior/Próximo -->
                 <nav class="reader-nav">
-                    <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Anterior</button>
-                    <button id="next-btn" class="nav-btn">Próximo <i class="fas fa-chevron-right"></i></button>
+                    <button id="prev-btn" class="nav-btn"><i class="fas fa-chevron-left"></i> Capítulo Anterior</button>
+                    <button id="next-btn" class="nav-btn">Próximo Capítulo <i class="fas fa-chevron-right"></i></button>
                 </nav>
             </div>
         </section>
 
     </main>
+
+    <!-- Modal / Gaveta de Seleção de Livro e Capítulo (Mobile & Desktop) -->
+    <div id="bible-selector-modal" class="bible-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="bible-modal-backdrop" id="modal-backdrop"></div>
+        <div class="bible-modal-dialog">
+            
+            <!-- Cabeçalho do Modal -->
+            <div class="modal-header">
+                <button id="modal-back-btn" class="modal-btn-icon" title="Voltar para lista de livros" style="display: none;" aria-label="Voltar para livros">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="modal-title-wrap">
+                    <h3 id="modal-title" class="modal-title">Escolha o Livro</h3>
+                    <span id="modal-subtitle" class="modal-subtitle">73 livros da Bíblia Sagrada Ave Maria</span>
+                </div>
+                <button id="modal-close-btn" class="modal-btn-icon" title="Fechar seletor" aria-label="Fechar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Visualização de Livros (Passo 1) -->
+            <div id="selector-books-view" class="selector-view active">
+                <!-- Barra de Busca do Modal -->
+                <div class="modal-search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="bible-modal-search" class="modal-search-input" placeholder="Buscar livro ou sigla (ex: Mt, Lucas, Sl, Gn)..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                    <button id="modal-search-clear" class="search-clear-btn" title="Limpar busca" style="display: none;" aria-label="Limpar">
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
+
+                <!-- Chips de Categorias Bíblicas -->
+                <div class="modal-filter-chips" id="modal-filter-chips">
+                    <button class="filter-chip active" data-filter="ALL">Todos (73)</button>
+                    <button class="filter-chip" data-filter="EV">Evangelhos (4)</button>
+                    <button class="filter-chip" data-filter="NT">Novo Testamento</button>
+                    <button class="filter-chip" data-filter="AT">Antigo Testamento</button>
+                    <button class="filter-chip" data-filter="PENT">Pentateuco</button>
+                    <button class="filter-chip" data-filter="HIST">Históricos</button>
+                    <button class="filter-chip" data-filter="SAP">Sapienciais</button>
+                    <button class="filter-chip" data-filter="PROF">Proféticos</button>
+                    <button class="filter-chip" data-filter="CART">Cartas</button>
+                </div>
+
+                <!-- Lista de Livros -->
+                <div class="modal-books-scroll" id="modal-books-list">
+                    <!-- Gerado dinamicamente -->
+                </div>
+            </div>
+
+            <!-- Visualização de Capítulos (Passo 2) -->
+            <div id="selector-chapters-view" class="selector-view" style="display: none;">
+                <div class="selected-book-banner">
+                    <div class="banner-book-info">
+                        <span id="banner-book-tag" class="book-badge">NT</span>
+                        <div>
+                            <h4 id="banner-book-name">São Mateus</h4>
+                            <span id="banner-book-total" class="banner-sub">28 capítulos</span>
+                        </div>
+                    </div>
+                    <button id="change-book-btn" class="change-book-btn" title="Escolher outro livro">
+                        <i class="fas fa-exchange-alt"></i> Trocar Livro
+                    </button>
+                </div>
+
+                <div class="modal-chapters-scroll">
+                    <div class="chapters-instruction">
+                        <span>Selecione o capítulo:</span>
+                    </div>
+                    <div id="modal-chapters-grid" class="modal-chapters-grid">
+                        <!-- Gerado dinamicamente -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Barra Inferior de Navegação Rápida no Smartphone -->
+    <nav class="mobile-bottom-bar" id="mobile-bottom-bar" aria-label="Navegação Bíblica Móvel">
+        <button id="mobile-prev-btn" class="mobile-bar-btn" title="Capítulo Anterior" aria-label="Capítulo Anterior">
+            <i class="fas fa-chevron-left"></i>
+            <span>Anterior</span>
+        </button>
+        <button id="mobile-selector-btn" class="mobile-bar-selector" title="Toque para mudar livro ou capítulo" aria-label="Abrir seletor de Livro e Capítulo">
+            <i class="fas fa-book-open"></i>
+            <span id="mobile-location-text">Gênesis 1</span>
+            <i class="fas fa-chevron-up bar-chevron"></i>
+        </button>
+        <button id="mobile-next-btn" class="mobile-bar-btn" title="Próximo Capítulo" aria-label="Próximo Capítulo">
+            <i class="fas fa-chevron-right"></i>
+            <span>Próximo</span>
+        </button>
+        <button id="mobile-font-btn" class="mobile-bar-btn" title="Ajustar Tamanho do Texto" aria-label="Ajustar Fonte">
+            <i class="fas fa-text-height"></i>
+            <span>Fonte</span>
+        </button>
+    </nav>
 
     <!-- Footer -->
     <footer class="footer">
@@ -166,6 +281,6 @@
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.1/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHy501CgVNZryVy16M1MZhR1Ol65Weg36k6ltF9cWD16gZlzBU3FMOP02IF9wc5QrJu9ONwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/main.js"></script>
-    <script src="js/bible.js"></script>
+    <script src="js/bible.js?v=3"></script>
 </body>
 </html>
