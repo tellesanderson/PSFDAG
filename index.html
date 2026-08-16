@@ -158,15 +158,27 @@
                     <h3>Secretaria Paroquial</h3>
                     <div class="time-list">
                         <div class="time-item" style="flex-direction: column; align-items: flex-start; gap: 5px;">
-                            <span class="time-day" style="color: var(--color-primary); font-size: 1.1rem;">Segunda a Sexta</span>
-                            <span class="time-hour" style="font-weight: 500; color: var(--color-text-muted);">Manhã: 08:30 às 11:30</span>
-                            <span class="time-hour" style="font-weight: 500; color: var(--color-text-muted);">Tarde: 13:30 às 17:15</span>
-                        </div>
-                        <div class="time-item" style="flex-direction: column; align-items: flex-start; gap: 5px;">
-                            <span class="time-day" style="color: var(--color-primary); font-size: 1.1rem;">Sábado</span>
-                            <span class="time-hour" style="font-weight: 500; color: var(--color-text-muted);">Manhã: 08:30 às 11:30</span>
-                        </div>
+                    <div class="card-header">
+                        <i class="fas fa-pray"></i>
+                        <h3>São José Operário</h3>
                     </div>
+                    <ul class="times-list">
+                        <li><span>Terça-feira</span> <strong>19:30</strong></li>
+                        <li><span>Domingo</span> <strong>08:00</strong></li>
+                    </ul>
+                    <a href="https://maps.app.goo.gl/2fXeiiGiojJsT8L88" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: 20px; width: 100%;"><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Ver no Mapa</a>
+                </div>
+                
+                <!-- Atendimento da Secretaria Paroquial -->
+                <div class="schedule-card special-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-header">
+                        <i class="fas fa-clock"></i>
+                        <h3>Secretaria Paroquial</h3>
+                    </div>
+                    <ul class="times-list">
+                        <li><span>Segunda a Sexta</span> <strong>08:00 às 11:30<br>13:30 às 17:30</strong></li>
+                        <li><span>Sábado</span> <strong>08:00 às 11:30</strong></li>
+                    </ul>
                     <a href="https://wa.me/554134723510" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 20px; width: 100%;"><i class="fab fa-whatsapp" style="margin-right: 8px;"></i> Fale Conosco</a>
                 </div>
             </div>
@@ -174,7 +186,7 @@
     </section>
 
     <!-- Conheça o Padroeiro -->
-    <section class="patron-banner" style="background: linear-gradient(rgba(60, 42, 33, 0.8), rgba(60, 42, 33, 0.9)), url('img/BG.jpg') center/cover fixed; padding: var(--spacing-xl) 0; text-align: center; color: white;">
+    <section class="patron-banner" style="background: linear-gradient(rgba(60, 42, 33, 0.8), rgba(60, 42, 33, 0.9)), url('img/BG.webp') center/cover fixed; padding: var(--spacing-xl) 0; text-align: center; color: white;">
         <div class="container" data-aos="zoom-in">
             <h2 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 10px; color: var(--color-secondary);">São Francisco de Assis</h2>
             <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; opacity: 0.9;">"Comece fazendo o que é necessário, depois o que é possível, e de repente você estará fazendo o impossível."</p>
@@ -254,7 +266,7 @@
                         </div>
                     </div>
                     <div class="tithe-qr">
-                        <img src="img/qrcode-pix.png" alt="QR Code PIX Dízimo" class="qr-code">
+                        <img src="img/qrcode-pix.webp" alt="QR Code PIX Dízimo" class="qr-code">
                         <p>Escaneie o QR Code com o aplicativo do seu banco</p>
                     </div>
                 </div>
@@ -268,21 +280,28 @@
             <h2 class="section-title">Acompanhe-nos</h2>
             <p class="section-subtitle">Siga nossas redes sociais e fique por dentro de todos os avisos, transmissões e eventos paroquiais.</p>
             
-            <div class="social-links-large">
-                <a href="https://www.facebook.com/psaochicodeassis" target="_blank" rel="noopener noreferrer" class="social-box facebook">
-                    <i class="fab fa-facebook"></i>
-                    <span>/psaochicodeassis</span>
-                </a>
-                
-                <a href="https://www.instagram.com/psaochicodeassis/" target="_blank" rel="noopener noreferrer" class="social-box instagram">
+            <div class="social-links-grid">
+                <a href="https://www.instagram.com/paroquiasaofrancisco.gtba/" target="_blank" rel="noopener noreferrer" class="social-btn instagram" aria-label="Siga-nos no Instagram">
                     <i class="fab fa-instagram"></i>
-                    <span>@psaochicodeassis</span>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/paroquiasaofranciscogba/" target="_blank" rel="noopener noreferrer" class="social-btn facebook" aria-label="Acompanhe nossa página no Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://www.youtube.com/@paróquiasãofranciscodeassi795" target="_blank" rel="noopener noreferrer" class="social-btn youtube" aria-label="Inscreva-se em nosso canal no YouTube">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://wa.me/554134723510" target="_blank" rel="noopener noreferrer" class="social-btn whatsapp" aria-label="Fale conosco pelo WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contato -->
+    <!-- Footer -->
     <footer id="contato" class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -296,9 +315,11 @@
                     <ul>
                         <li><a href="#inicio">Início</a></li>
                         <li><a href="#horarios">Horários de Missa</a></li>
+                        <li><a href="#liturgia">Liturgia Diária</a></li>
                         <li><a href="#pastorais">Nossas Pastorais</a></li>
                         <li><a href="acampamento.html">Acampamentos</a></li>
                         <li><a href="biblia.html">Bíblia Sagrada</a></li>
+                        <li><a href="#dizimo">Dízimo</a></li>
                     </ul>
                 </div>
                 
@@ -307,22 +328,18 @@
                     <ul class="contact-info">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span><a href="https://www.google.com/maps/place/Par%C3%B3quia+S%C3%A3o+Francisco+de+Assis/@-25.8874442,-48.5877941,19.75z/data=!4m14!1m7!3m6!1s0x94dbfa9ac2def11d:0x2148279da99a5dc6!2sR.+Eng.+Beltr%C3%A3o,+186+-+Guaratuba,+PR,+83280-000!3b1!8m2!3d-25.8878469!4d-48.5879046!3m5!1s0x94dbfbd064d6f213:0x82356a693c4c5adc!8m2!3d-25.8873222!4d-48.5873674!16s%2Fg%2F11l31njyw0?entry=ttu&g_ep=EgoyMDI2MDQyOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="color: inherit;">Rua Engenheiro Beltrão, 186<br>Guaratuba - PR, Brasil</a></span>
+                            <span><a href="https://maps.app.goo.gl/2fXeiiGiojJsT8L88" target="_blank" rel="noopener noreferrer" style="color: inherit;">Rua Engenheiro Beltrão, 186<br>Guaratuba - PR, Brasil</a></span>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
                             <span>+55 41 3472-3510</span>
-                        </li>
-                        <li style="margin-top: 15px;">
-                            <a href="https://wa.me/554134723510" id="footer-whatsapp-btn" target="_blank" rel="noopener noreferrer" class="btn" style="background-color: #25d366; color: white; padding: 0.5rem 1.2rem; font-size: 0.85rem;">
-                                <i class="fab fa-whatsapp" style="margin-right: 8px; margin-top: 0; color: white;"></i> Chamar no WhatsApp
-                            </a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
                             <span><a href="mailto:paroquiasaofranciscogtba@hotmail.com" style="color: inherit;">paroquiasaofranciscogtba@hotmail.com</a></span>
                         </li>
                     </ul>
+                    <a href="https://wa.me/554134723510" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 20px; display: inline-flex; align-items: center; justify-content: center;"><i class="fab fa-whatsapp" style="margin-right: 10px; font-size: 1.2rem;"></i> Falar com a Secretaria</a>
                 </div>
             </div>
             
@@ -332,6 +349,46 @@
             </div>
         </div>
     </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/554134723510" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Fale conosco pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Story Modal -->
+    <div id="story-modal" class="story-modal">
+        <div class="story-container">
+            <!-- Fechar -->
+            <button id="close-story" class="story-close"><i class="fas fa-times"></i></button>
+            
+            <!-- Barra superior: Nome e Ícone -->
+            <div class="story-header">
+                <img src="img/logo.webp" alt="Logo" class="story-avatar">
+                <span class="story-username">São Francisco de Assis</span>
+            </div>
+
+            <!-- Barrinhas de Progresso -->
+            <div class="story-progress-container">
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+                <div class="story-progress-bar"><div class="story-progress-fill"></div></div>
+            </div>
+
+            <!-- Imagem -->
+            <div class="story-image-wrapper">
+                <img id="story-image" src="img/1.webp" alt="História">
+            </div>
+
+            <!-- Áreas de toque -->
+            <div id="story-prev" class="story-touch-left"></div>
+            <div id="story-next" class="story-touch-right">
+                <i class="fas fa-chevron-right story-hint-arrow"></i>
+            </div>
+        </div>
+    </div>
 
     <!-- Liturgy Modal -->
     <div id="liturgyModal" class="modal">

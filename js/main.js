@@ -247,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressFills = document.querySelectorAll('.story-progress-fill');
     
     if (storyModal && openStoryBtn) {
-        const stories = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg'];
+        const stories = ['img/1.webp', 'img/2.webp', 'img/3.webp', 'img/4.webp', 'img/5.webp', 'img/6.webp'];
         let currentStory = 0;
         
         function updateStory() {
