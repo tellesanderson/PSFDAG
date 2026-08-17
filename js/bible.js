@@ -241,6 +241,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // FETCH & DATA INITIALIZATION
     // =========================================================================
+    function getInitialBookAndChapterFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        let bookParam = params.get('livro') || params.get('book') || params.get('b') || params.get('id');
+        let chapterParam = params.get('capitulo') || params.get('cap') || params.get('c');
+        
+        if (!bookParam && window.location.hash) {
+            const hashClean = window.location.hash.replace('#', '').trim();
+            const parts = hashClean.split('-');
+            if (parts.length >= 2) {
+                bookParam = parts[0];
+                chapterParam = parts[1];
+            } else if (parts.length === 1 && parts[0]) {
+                bookParam = parts[0];
+            }
+        }
+        
+        let targetBookId = null;
+        let targetChapter = chapterParam ? parseInt(chapterParam) : 1;
+        
+        if (bookParam) {
+            const parsedNum = parseInt(bookParam);
+            if (!isNaN(parsedNum) && parsedNum >= 1 && parsedNum <= 73) {
+                targetBookId = parsedNum;
+            } else {
+                const normalizedQuery = normalizeText(bookParam);
+                const found = booksIndex.find(b => 
+                    normalizeText(b.abbrev) === normalizedQuery || 
+                    normalizeText(b.name).includes(normalizedQuery)
+                );
+                if (found) {
+                    targetBookId = found.id;
+                }
+            }
+        }
+        
+        if (!targetBookId) {
+            targetBookId = parseInt(localStorage.getItem('bible_current_book_id')) || 1;
+            targetChapter = parseInt(localStorage.getItem('bible_current_chapter')) || 1;
+        }
+        
+        return { bookId: targetBookId, chapter: targetChapter };
+    }
+
     async function fetchIndex() {
         try {
             const response = await fetch('data/bible/index.json');
@@ -250,8 +293,9 @@ document.addEventListener('DOMContentLoaded', () => {
             renderDesktopSidebarList(booksIndex);
             renderModalBooks(booksIndex);
             
-            // Auto load saved book and chapter
-            loadBookAndChapter(currentBookId, currentChapter);
+            // Auto load saved book and chapter or URL parameters
+            const initial = getInitialBookAndChapterFromUrl();
+            loadBookAndChapter(initial.bookId, initial.chapter, false);
         } catch (error) {
             console.error(error);
             bibleTextContainer.innerHTML = `<div class="error-msg" style="text-align: center; padding: 2rem;">
@@ -528,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // LOAD BOOK & CHAPTER (CORE READING ENGINE)
     // =========================================================================
-    async function loadBookAndChapter(bookId, chapterNum) {
+    async function loadBookAndChapter(bookId, chapterNum, updateHistory = true) {
         const bookMeta = booksIndex.find(b => b.id === bookId);
         if (!bookMeta) return;
         
@@ -543,6 +587,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save State to LocalStorage
         localStorage.setItem('bible_current_book_id', currentBookId);
         localStorage.setItem('bible_current_chapter', currentChapter);
+        
+        // Update document title for SEO and Browser History
+        document.title = `${bookMeta.name} ${chapterNum} | Bíblia Sagrada Católica Online - Paróquia São Francisco de Assis`;
+
+        // Sync URL with parameters for shareability and deep indexing
+        if (updateHistory && window.history && window.history.replaceState) {
+            const cleanAbbrev = encodeURIComponent(bookMeta.abbrev.toLowerCase());
+            const newUrl = `${window.location.pathname}?livro=${cleanAbbrev}&capitulo=${chapterNum}`;
+            window.history.replaceState({ bookId, chapter: chapterNum }, document.title, newUrl);
+        }
         
         // Update Top Toolbar UI
         if (locationBook) locationBook.textContent = bookMeta.name;
@@ -799,4 +853,12 @@ document.addEventListener('DOMContentLoaded', () => {
             toast.style.transform = 'translateX(-50%) translateY(10px)';
         }, 2600);
     }
+
+    // Support browser back/forward history buttons
+    window.addEventListener('popstate', () => {
+        if (booksIndex && booksIndex.length > 0) {
+            const initial = getInitialBookAndChapterFromUrl();
+            loadBookAndChapter(initial.bookId, initial.chapter, false);
+        }
+    });
 });

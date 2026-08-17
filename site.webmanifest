@@ -1,0 +1,22 @@
+{
+  "name": "Paróquia São Francisco de Assis - Guaratuba",
+  "short_name": "PSFDAG",
+  "description": "Plataforma oficial da Paróquia São Francisco de Assis em Guaratuba - PR. Horários de missa, liturgia diária e Bíblia online.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3c2a21",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/img/logo.webp",
+      "sizes": "192x192 512x512",
+      "type": "image/webp"
+    },
+    {
+      "src": "/img/logo.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

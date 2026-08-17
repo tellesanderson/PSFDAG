@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Página Inicial da Paróquia -->
   <url>
     <loc>https://psaofranciscodeassisgtba.com.br/</loc>
-    <lastmod>2026-05-01</lastmod>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://psaofranciscodeassisgtba.com.br/img/logo.jpg</image:loc>
+      <image:title>Logo da Paróquia São Francisco de Assis de Guaratuba</image:title>
+      <image:caption>Paróquia São Francisco de Assis em Guaratuba - PR</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://psaofranciscodeassisgtba.com.br/img/BG.jpg</image:loc>
+      <image:title>Fachada e Altar da Paróquia São Francisco de Assis</image:title>
+      <image:caption>Igreja Católica em Guaratuba</image:caption>
+    </image:image>
   </url>
+
+  <!-- Bíblia Sagrada Católica Ave Maria Completa Online -->
   <url>
-    <loc>https://psaofranciscodeassisgtba.com.br/acampamento.html</loc>
-    <lastmod>2026-05-01</lastmod>
+    <loc>https://psaofranciscodeassisgtba.com.br/biblia.html</loc>
+    <lastmod>2026-08-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://psaofranciscodeassisgtba.com.br/img/logo.jpg</image:loc>
+      <image:title>Bíblia Sagrada Católica Ave Maria Online</image:title>
+      <image:caption>Leitor completo da Bíblia Sagrada com 73 livros católicos</image:caption>
+    </image:image>
   </url>
 </urlset>

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://psaofranciscodeassisgtba.com.br/sitemap.xml
+Host: https://psaofranciscodeassisgtba.com.br
